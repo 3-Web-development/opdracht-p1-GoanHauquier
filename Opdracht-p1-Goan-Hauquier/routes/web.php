@@ -11,12 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
 
-Route::get('/contest', function () {
-    return view('contest');
-});
+Route::get('/', 'PagesController@getHome');
 
-Route::post('/contest/submit', 'ParticipationController@submit', 'ParticipationController@ip');
+Route::get('/contest', 'PagesController@getContest');
+
+Route::get('/participants', 'ParticipationController@getParticipants');
+
+Route::post('/contest/submit', 'ParticipationController@submit');
