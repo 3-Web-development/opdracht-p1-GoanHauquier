@@ -33,5 +33,5 @@
 
 
 @section('button')
-<button><a href=".">Back</a></button>
+<button><a href=".">Terug</a></button>
 @endsection

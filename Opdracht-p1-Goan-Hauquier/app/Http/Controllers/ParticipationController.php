@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Participate;
+use App\Winners;
 
 class ParticipationController extends Controller
 {
     public function submit (Request $request) {
         $clientIP = request()->ip();
+        
+        // VALIDATIE
         $this->validate($request, [
             'name' => 'required',
             'adress' => 'required',
@@ -19,9 +22,11 @@ class ParticipationController extends Controller
         
         $participant = new Participate;
         
+        // CHECK OF CODE AL IS GEBRUIKT
         if (Participate::where('code', $request->code)->first()) {
             return redirect('')->with('successful', 'Deze code is al gebruikt.');
         }
+        // ZO NIET DATA IN DATABASE STOPPEN
         else {
             $participant->name = $request->input('name');
             $participant->adress = $request->input('adress');
@@ -32,10 +37,20 @@ class ParticipationController extends Controller
 
             $participant->save();
 
-            if ($participant->code == 12345) {
+            // ALS DE CODE OVEREENKOMT MET DE WINNENDE CODE DATA OOK IN WINNAARSTABEL STOPPEN
+            if ($participant->code == 555) {
                 
                 $participant->isWinner = 1;
                 $participant->save();
+                
+                $winner = new Winners;
+                $winner->name = $request->input('name');
+                $winner->adress = $request->input('adress');
+                $winner->city = $request->input('city');
+                $winner->email = $request->input('email');
+                $winner->ip = $clientIP;
+                
+                $winner->save();
                 
                 return redirect('')->with('successful', 'We hebben een winnaar! We nemen contact met je op nadat de wedstrijd verlopen is.');
             }
@@ -43,9 +58,6 @@ class ParticipationController extends Controller
                 return redirect('')->with('successful', 'Helaas, je hebt niets gewonnen.');
             }
         }
-        
-        
-        
     }
 
     
@@ -53,6 +65,12 @@ class ParticipationController extends Controller
         $participants = Participate::all();
         
         return view('participants')->with('participants', $participants);
+    }
+    
+    public function getWinners () {
+        $winners = Winners::all();
+        
+        return view('home')->with('winners', $winners);
     }
     
         
@@ -66,10 +84,7 @@ class ParticipationController extends Controller
         return redirect('participants')->with('successful', 'Deelname verwijderd!');
     }
     
-    public function validateCode (Request $request, $id) {
-        
-        
-    }
+
 }
 
 

@@ -17,9 +17,10 @@
             <div class="col-md-8 col-lg-8">
                 @include('inc.errors')
                 @yield('content')  
+               
             </div>
             <div class="col-md-4 col-lg-4">
-                @yield('button')   
+                @yield('right')
             </div>
         </div>
    

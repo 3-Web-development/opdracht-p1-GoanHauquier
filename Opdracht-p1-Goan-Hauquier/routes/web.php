@@ -14,9 +14,13 @@
 
 Route::get('/', 'PagesController@getHome');
 
+Route::get('/', 'ParticipationController@getWinners');
+
 Route::get('/contest', 'PagesController@getContest');
 
 Route::get('/participants', 'ParticipationController@getParticipants');
+
+
 
 Route::post('/contest/submit', 'ParticipationController@submit');
 
