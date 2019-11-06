@@ -27,10 +27,22 @@ class ParticipationController extends Controller
         
         return redirect('')->with('successful', 'Deelname geregistreerd!');
     }
+
     
     public function getParticipants () {
         $participants = Participate::all();
         
         return view('participants')->with('participants', $participants);
+    }
+    
+        
+    public function disqualify (Request $request, $id) {
+        
+
+        $disq = Participate::find($id);
+        $disq->isDeleted = 1;
+        $disq->save();
+        
+        return redirect('participants')->with('successful', 'Deelname verwijderd!');
     }
 }

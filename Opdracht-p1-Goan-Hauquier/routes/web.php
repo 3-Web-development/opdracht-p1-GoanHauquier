@@ -19,3 +19,5 @@ Route::get('/contest', 'PagesController@getContest');
 Route::get('/participants', 'ParticipationController@getParticipants');
 
 Route::post('/contest/submit', 'ParticipationController@submit');
+
+Route::post('/participants/disqualify/{id}', 'ParticipationController@disqualify');
