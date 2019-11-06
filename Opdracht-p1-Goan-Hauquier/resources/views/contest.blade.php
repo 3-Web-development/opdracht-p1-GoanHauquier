@@ -20,6 +20,10 @@
         {{Form::label('email', 'E-Mail Addres')}}
         {{Form::text('email', '', ['class' => 'form-control', 'placeholder' => 'eMail'])}}
     </div>
+    <div class="form-group">
+        {{Form::label('code', 'Je persoonlijke code')}}
+        {{Form::text('code', '', ['class' => 'form-control', 'placeholder' => 'Code'])}}
+    </div>
     <div>
         {{Form::submit('Deelnemen!', ['class' => 'btn btn-primary'])}}
     </div>

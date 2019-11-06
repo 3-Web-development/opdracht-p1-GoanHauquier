@@ -11,6 +11,7 @@
                 <li class="list-group-item">Adres: {{$participant->adress}}</li>
                 <li class="list-group-item">Woonplaats: {{$participant->city}}</li>
                 <li class="list-group-item">Email: {{$participant->email}}</li>
+                <li class="list-group-item">Code: {{$participant->code}}</li>
             </ul>
             <form action=" {!! action('ParticipationController@disqualify',$participant->id) !!}" method="POST">
                
