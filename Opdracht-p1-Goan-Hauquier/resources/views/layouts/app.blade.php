@@ -8,8 +8,7 @@
 
 </head>
 <body>
- @section('header')
-    <header class="masthead mb-auto">
+    <header class="masthead col-md-8 col-lg-8">
         <h1>Header</h1>
     </header>
     <div class="container">
@@ -23,12 +22,6 @@
                 @yield('right')
             </div>
         </div>
-   
-        
     </div>
-   
-    
-    
-    
 </body>
 </html>

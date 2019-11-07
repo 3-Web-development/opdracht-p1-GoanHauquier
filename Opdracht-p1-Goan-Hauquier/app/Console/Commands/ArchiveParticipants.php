@@ -3,16 +3,16 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Winners;
+use App\Participate;
 
-class SelectWinner extends Command
+class ArchiveParticipants extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'command:selectwinner';
+    protected $signature = 'command:archive';
 
     /**
      * The console command description.
@@ -38,15 +38,6 @@ class SelectWinner extends Command
      */
     public function handle()
     {
-        $winners = Winners::all();
-        foreach ($winners as $winner) {
-            if ($winner->isShowed != 1) {
-                $winner->isShowed = 1;
-            }
-            $winner->save();
-        }
-        
-        dd($winners);
-        
+        Participate::truncate();
     }
 }

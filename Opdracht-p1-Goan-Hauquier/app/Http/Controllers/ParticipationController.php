@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Participate;
 use App\Winners;
+use App\Archive;
 
 class ParticipationController extends Controller
 {
@@ -21,10 +22,11 @@ class ParticipationController extends Controller
         ]);
         
         $participant = new Participate;
+        $archive = new Archive; 
         
         // CHECK OF CODE AL IS GEBRUIKT
         if (Participate::where('code', $request->code)->first()) {
-            return redirect('')->with('successful', 'Deze code is al gebruikt.');
+            return redirect('contest')->with('successful', 'Deze code is al gebruikt.');
         }
         // ZO NIET DATA IN DATABASE STOPPEN
         else {
@@ -36,6 +38,14 @@ class ParticipationController extends Controller
             $participant->ip = $clientIP;
 
             $participant->save();
+            
+            $archive->name = $request->input('name');
+            $archive->adress = $request->input('adress');
+            $archive->city = $request->input('city');
+            $archive->email = $request->input('email');
+            $archive->ip = $clientIP;
+            
+            $archive->save();
 
             // ALS DE CODE OVEREENKOMT MET DE WINNENDE CODE DATA OOK IN WINNAARSTABEL STOPPEN
             if ($participant->code == 555) {
