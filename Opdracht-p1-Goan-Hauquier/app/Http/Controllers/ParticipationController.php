@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Participate;
 use App\Winners;
 use App\Archive;
+use App\Codes;
 
 class ParticipationController extends Controller
 {
@@ -23,6 +24,7 @@ class ParticipationController extends Controller
         
         $participant = new Participate;
         $archive = new Archive; 
+        $code = Codes::find(1);
         
         // CHECK OF CODE AL IS GEBRUIKT
         if (Participate::where('code', $request->code)->first()) {
@@ -48,7 +50,8 @@ class ParticipationController extends Controller
             $archive->save();
 
             // ALS DE CODE OVEREENKOMT MET DE WINNENDE CODE DATA OOK IN WINNAARSTABEL STOPPEN
-            if ($participant->code == 555) {
+            
+            if ($participant->code == $code->code) {
                 
                 $participant->isWinner = 1;
                 $participant->save();
@@ -82,6 +85,7 @@ class ParticipationController extends Controller
         
         return view('home')->with('winners', $winners);
     }
+    
     
         
     public function disqualify (Request $request, $id) {

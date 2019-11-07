@@ -18,6 +18,7 @@
                 <ul class="list-group">
                     <li class="list-group-item">Naam: {{$winner->name}}</li> 
                     <li class="list-group-item">Woonplaats: {{$winner->city}}</li>
+                    <li class="list-group-item">Code: {{$winner->city}}</li>
                 </ul>
             @endif
         @endforeach 

@@ -13,7 +13,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'App\Console\Commands\SelectWinner'
+        'App\Console\Commands\SelectWinner',
+        'App\Console\Commands\ArchiveParticipants',
+        'App\Console\Commands\CreateCode'
     ];
 
     /**
@@ -27,6 +29,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('command:selectwinner')
                   ->weekly();
         $schedule->command('command:archive')
+                  ->weekly();
+        $schedule->command('command:createcode')
                   ->weekly();
     }
 
