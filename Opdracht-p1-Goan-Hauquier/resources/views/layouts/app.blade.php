@@ -20,6 +20,7 @@
             </div>
             <div class="col-md-4 col-lg-4">
                 @yield('right')
+                @yield('button')
             </div>
         </div>
     </div>

@@ -7,6 +7,7 @@ use App\Participate;
 use App\Winners;
 use App\Archive;
 use App\Codes;
+use App\Admin;
 
 class ParticipationController extends Controller
 {
@@ -96,6 +97,19 @@ class ParticipationController extends Controller
         $disq->save();
         
         return redirect('participants')->with('successful', 'Deelname verwijderd!');
+    }
+    
+    public function admin (Request $request) {
+        $admin = new Admin;
+        
+        $this->validate($request, [
+            'email' => 'required'
+        ]);
+        
+        $admin->email = $request->input('email');
+        $admin->save();
+        
+        return redirect('participants')->with('successful', 'email toegevoegd');
     }
     
 

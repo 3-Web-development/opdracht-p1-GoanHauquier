@@ -20,7 +20,7 @@ Route::get('/contest', 'PagesController@getContest');
 
 Route::get('/participants', 'ParticipationController@getParticipants');
 
-
+Route::post('participants/admin', 'ParticipationController@admin');
 
 Route::post('/contest/submit', 'ParticipationController@submit');
 

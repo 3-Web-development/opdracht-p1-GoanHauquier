@@ -25,6 +25,17 @@
 @endif
 @endsection
 
+@section('right')
+{!! Form::open(['url' => 'participants/admin']) !!}
+    <div class="form-group">
+        {{Form::label('email', 'Admin email')}}
+        {{Form::text('email', '', ['class' => 'form-control', 'placeholder' => 'email'])}}
+    </div>
+    <div>
+        {{Form::submit('Klaar', ['class' => 'btn btn-primary'])}}
+    </div>
+{!! Form::close() !!}
+@endsection
 
 @section('button')
 <button><a href=".">Terug</a></button>

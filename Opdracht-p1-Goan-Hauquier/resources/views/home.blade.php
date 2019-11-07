@@ -5,6 +5,8 @@
 @section('content')
 <h1>Dr Oetker</h1>
 <br/>
+<h3>Win een gratis pizza!</h3>
+<p>Op elke doos Ristorante Pizza staat een code. Geef jou code in en misschien win jij wel een gratis pizza!</p>
 <button><a href="contest">Wedstrijd</a></button>
 
 @endsection
