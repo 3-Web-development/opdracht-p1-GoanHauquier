@@ -27,11 +27,11 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('command:selectwinner')
-                  ->weeklyOn(4, '20:10');
+                  ->everyMinute;
         $schedule->command('command:archive')
-                  ->weeklyOn(4, '20:10');
+                  ->everyMinute;
         $schedule->command('command:createcode')
-                  ->weeklyOn(4, '20:10');
+                  ->everyMinute;
     }
 
     /**
